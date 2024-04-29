@@ -1,0 +1,92 @@
+<link rel="stylesheet" href="booking.component.css">
+
+<body>
+    <div class="container">
+        <h2>Booking Details</h2>
+        <form [formGroup]="userForm" (ngSubmit)="submitUserDetail()">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" placeholder="Enter your name" formControlName="Name">
+                <div class="text-red-500 text-sm"
+                    *ngIf="userForm.controls['Name'].invalid && (userForm.controls['Name'].touched || userForm.controls['Name'].dirty)">
+                    <span *ngIf="userForm.controls['Name'].errors?.['required']">Please enter a name</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="vehicleName">Vehicle Number:</label>
+                <input type="text" class="form-control" placeholder="Enter vehicle number"
+                    formControlName="vehicleNumber">
+                <div class="text-red-500 text-sm"
+                    *ngIf="userForm.controls['vehicleNumber'].invalid && (userForm.controls['vehicleNumber'].touched || userForm.controls['vehicleNumber'].dirty)">
+                    <span *ngIf="userForm.controls['vehicleNumber'].errors?.['invalidVehicleNumber']">Please enter a
+                        valid vehicle number</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="vehicleType">Vehicle Type:</label>
+                <select id="vehicleType" name="vehicleType" class="form-control" formControlName="vehicleType">
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Bike">Bike</option>
+                    <option value="Car">Car</option>
+                    <option value="Van">Van</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="tel" id="contactNumber" name="contactNumber" class="form-control"
+                    placeholder="Enter contact number" formControlName="ContactNumber">
+                <div class="text-red-500 text-sm"
+                    *ngIf="userForm.controls['ContactNumber'].invalid && (userForm.controls['ContactNumber'].touched || userForm.controls['ContactNumber'].dirty)">
+                    <span *ngIf="userForm.controls['ContactNumber'].errors?.['invalidContactNumber']">Please enter a
+                        valid contact number</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" class="form-control" formControlName="Date">
+            </div>
+
+            <div class="form-group">
+                <label for="arrivalTime" class="block text-sm font-medium text-gray-300">Arrival Time:</label>
+                <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="time" id="arrivalTime" name="arrivalTime"
+                        class="black-input appearance-none block w-1/4 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        formControlName="ArrivalTime" placeholder="HH:MM">
+                    <select
+                        class="black-input appearance-none block w-1/4 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        formControlName="ArrivalTime">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="departureTime" class="block text-sm font-medium text-gray-300">Departure Time:</label>
+                <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="time" id="departureTime" name="departureTime"
+                        class="black-input appearance-none block w-1/4 px-3 py-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        formControlName="DepartureTime" placeholder="HH:MM">
+                    <select
+                        class="black-input appearance-none block w-1/4 px-3 py-2 border border-gray-300 rounded-r-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                        formControlName="DepartureTime">
+                        <option value="AM">AM</option>
+                        <option value="PM">PM</option>
+                    </select>
+                </div>
+            </div>
+            <div class="text-red-500 text-sm"
+                *ngIf="userForm.hasError('invalidTimeRange') && (userForm.get('ArrivalTime').touched || userForm.get('DepartureTime').touched)">
+                INVALID TIME
+            </div>
+
+            <div>
+                <button type="submit" [disabled]="userForm.invalid">Book Now</button>
+                <div *ngIf="bookingSuccess" class="submitMessage">
+                    Booked successfully!
+                  </div>
+            </div>
+        </form>
+    </div>
+</body> 

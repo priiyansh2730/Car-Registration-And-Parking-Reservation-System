@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "parkease",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "asia-east1" 
+      }
+    }
+  ]
+}

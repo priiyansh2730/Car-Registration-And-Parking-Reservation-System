@@ -1,0 +1,35 @@
+<!-- user.component.html -->
+
+<body>
+    <div class="container mx-auto px-4 pb-4">
+        <div class="bg-white">
+            <div class="overflow-x-auto">
+                <table class="table-auto w-full mt-25">
+                    <thead class="bg-red-500 border-b">
+                        <tr>
+                            <th class="px-4 py-2 text-white">Name</th>
+                            <th class="px-4 py-2 text-white">Contact Number</th>
+                            <th class="px-4 py-2 text-white">Vehicle</th>
+                            <th class="px-4 py-2 text-white">Vehicle Number</th>
+                            <th class="px-4 py-2 text-white">Date</th>
+                            <th class="px-4 py-2 text-white">Status</th>
+                            <th class="px-4 py-2 text-white">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        <tr *ngFor="let item of Users">
+                            <td class="px-4 py-2 border-b"><p class="font-semibold mb-1">{{ item.Name }}</p></td>
+                            <td class="px-4 py-2 border-b"><p class="font-semibold mb-1">{{ item.ContactNumber }}</p></td>
+                            <td class="px-4 py-2 border-b"><p class="text-m text-muted">{{ item.vehicleType }}</p></td>
+                            <td class="px-4 py-2 border-b"><p class="font-normal mb-1">{{ item.vehicleNumber }}</p></td>
+                            <td class="px-4 py-2 border-b">{{ item.Date }}</td>
+                            <td class="px-4 py-2 border-b"><p class="text-green-500 mb-1">Booked &#10004;</p></td>
+                            <td class="px-4 py-2 border-b"><button (click)="deleteUser(item.id)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Cancel</button></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

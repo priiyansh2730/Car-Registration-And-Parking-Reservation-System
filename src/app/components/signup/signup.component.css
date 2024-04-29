@@ -1,0 +1,8 @@
+/* Adjust the margin-bottom for the username input field */
+input[type="text"][formControlName="email"] {
+  margin-bottom: 9px;
+}
+input[type="text"][formControlName="password"] {
+  margin-bottom: 20px;
+}
+

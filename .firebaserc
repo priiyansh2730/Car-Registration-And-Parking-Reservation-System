@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "parkease-45f2b": {
+      "hosting": {
+        "parkease": [
+          "parkease-45f2b"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "parkease-45f2b"
+  }
+} 
